@@ -4,7 +4,7 @@ React shopping cart app
 
 Features:
 
-- Data is fetched with useReducer hook
+- Data is fetched with [useReducer hook](https://www.youtube.com/watch?v=4UZrsTqkcW4&t=26180s&ab_channel=freeCodeCamp.org)
 - Number of items can be increased/decreased
 - Total price and total number of items in cart are displayed
 - Item is removed by decreasing count or remove item button
