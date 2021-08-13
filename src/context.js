@@ -13,7 +13,7 @@ const initialState = {
 
 const AppProvider = ({ children }) => {
   // only update state once we call dispatch, once proper action is passed
-  // action is object passed to dispatch(), which object must have property by name of type (which is usually uppercase but not necessary), e.g.: dispatch({type: 'TESTING'})
+  // action is object passed to dispatch(), which object must have property by name of type (naming convention as in example), e.g.: dispatch({type: 'ADD_ITEM'})
   // once action is dispatched, need to handle it in reducer
   const [state, dispatch] = useReducer(reducer, initialState);
 
