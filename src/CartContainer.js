@@ -39,7 +39,7 @@ const CartContainer = () => {
           className="btn clear-btn"
           onClick={() => console.log('clear cart')}
         >
-          clear cart
+          clear carttest
         </button>
       </footer>
     </section>
