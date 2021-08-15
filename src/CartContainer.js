@@ -27,7 +27,7 @@ const CartContainer = () => {
           return <CartItem key={item.id} {...item} />;
         })}
       </div>
-      {/* cart footer testttt */}
+      {/* cart footer */}
       <footer>
         <hr />
         <div className="cart-total">
@@ -39,7 +39,7 @@ const CartContainer = () => {
           className="btn clear-btn"
           onClick={() => console.log('clear cart')}
         >
-          clear carttestaaaaaaaaa
+          clear cart
         </button>
       </footer>
     </section>
