@@ -2,7 +2,12 @@
 // state is current state before update, action is what we're trying to do (the action of a specific type dispatched by dispatch() function)
 // must always return updated state (...state, newState)
 const reducer = (state, action) => {
-  return state;
+  switch (action.type) {
+    case 'CLEAR_CART':
+      return { ...state, cart: [] };
+    default:
+      return state;
+  }
 };
 
 export default reducer;
