@@ -20,11 +20,18 @@ const AppProvider = ({ children }) => {
   const clearCart = () => {
     dispatch({ type: 'CLEAR_CART' });
   };
+
+  const remove = (id) => {
+    // calling it payload is a convention
+    dispatch({ type: 'REMOVE', payload: id });
+  };
+
   return (
     <AppContext.Provider
       value={{
         ...state,
         clearCart,
+        remove,
       }}
     >
       {children}
