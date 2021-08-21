@@ -18,6 +18,17 @@ const reducer = (state, action) => {
         return cartItem;
       });
       return { ...state, cart: tempCart };
+    case 'DECREASE':
+      let tempCart2 = state.cart
+        .map((cartItem) => {
+          if (cartItem.id === action.payload) {
+            return { ...cartItem, amount: cartItem.amount - 1 };
+          }
+          return cartItem;
+        })
+        // only keep items that are above zero (prevents negative number)
+        .filter((cartItem) => cartItem.amount !== 0);
+      return { ...state, cart: tempCart2 };
     default:
       return state;
   }
