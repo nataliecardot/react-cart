@@ -29,6 +29,23 @@ const reducer = (state, action) => {
         // only keep items that are above zero (prevents negative number)
         .filter((cartItem) => cartItem.amount !== 0);
       return { ...state, cart: tempCart2 };
+    case 'GET_TOTALS':
+      const { total, amount } = state.cart.reduce(
+        // cartTotal is the accumulator/prevValue, cartItem is current value being iterated over
+        (cartTotal, cartItem) => {
+          // Reducer callback function (value returned is stored in cartTotal [updated with each iteration])
+          const { price, amount } = cartItem;
+          // cartTotal is an object; on that object we have amount property; with each iteration add amount (of current cart item being processed)
+          cartTotal.amount += amount;
+          return cartTotal;
+        },
+        // Initial value (to which accumulator/prevValue is initialized first time reduce's callback is called)
+        {
+          total: 0,
+          amount: 0,
+        }
+      );
+      return { ...state, total, amount };
     default:
       return state;
   }
