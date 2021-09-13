@@ -30,11 +30,13 @@ const reducer = (state, action) => {
         .filter((cartItem) => cartItem.amount !== 0);
       return { ...state, cart: tempCart2 };
     case 'GET_TOTALS':
-      const { total, amount } = state.cart.reduce(
+      let { total, amount } = state.cart.reduce(
         // cartTotal is the accumulator/prevValue, cartItem is current value being iterated over
         (cartTotal, cartItem) => {
           // Reducer callback function (value returned is stored in cartTotal [updated with each iteration])
           const { price, amount } = cartItem;
+          const itemTotal = price * amount;
+          cartTotal.total += itemTotal;
           // cartTotal is an object; on that object we have amount property; with each iteration add amount (of current cart item being processed)
           cartTotal.amount += amount;
           return cartTotal;
@@ -45,6 +47,8 @@ const reducer = (state, action) => {
           amount: 0,
         }
       );
+      // Limiting number of decimals. toFixed() returns a string so must pass through parseFloat
+      total = parseFloat(total.toFixed(2));
       return { ...state, total, amount };
     default:
       return state;
