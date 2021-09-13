@@ -47,8 +47,8 @@ const reducer = (state, action) => {
           amount: 0,
         }
       );
-      // Limiting number of decimals. toFixed() returns a string so must pass through parseFloat
-      total = parseFloat(total.toFixed(2));
+      // adding commas to dollar amounts, and limiting decimal places to 2 with rounding (toFixed converts to string, so must use parseFloat to convert to integer)
+      total = new Intl.NumberFormat().format(parseFloat(total.toFixed(2)));
       return { ...state, total, amount };
     default:
       return state;
