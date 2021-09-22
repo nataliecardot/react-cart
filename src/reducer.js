@@ -50,6 +50,10 @@ const reducer = (state, action) => {
       // adding commas to dollar amounts, and limiting decimal places to 2 with rounding (toFixed converts to string, so must use parseFloat to convert to integer)
       total = new Intl.NumberFormat().format(parseFloat(total.toFixed(2)));
       return { ...state, total, amount };
+    case 'LOADING':
+      return { ...state, loading: true };
+    case 'DISPLAY_ITEMS':
+      return { ...state, cart: action.payload, loading: false };
     default:
       return state;
   }

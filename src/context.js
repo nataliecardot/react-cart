@@ -34,6 +34,19 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'DECREASE', payload: id });
   };
 
+  // fetches one of the cart items, Samsung Galaxy S8
+  const fetchData = async () => {
+    dispatch({ type: 'LOADING' });
+    const response = await fetch(url); // url defined at top of file
+    const cart = await response.json();
+    dispatch({ type: 'DISPLAY_ITEMS', payload: cart, loading: false });
+  };
+
+  // with empty dependency array, only called when app renders
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   useEffect(() => {
     dispatch({ type: 'GET_TOTALS' });
   }, [state.cart]);
