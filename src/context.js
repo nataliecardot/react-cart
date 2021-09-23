@@ -42,6 +42,11 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'DISPLAY_ITEMS', payload: cart, loading: false });
   };
 
+  // increase or decrease # items
+  const toggleAmount = (id, type) => {
+    dispatch({ type: 'TOGGLE_AMOUNT', payload: { id, type } });
+  };
+
   // with empty dependency array, only called when app renders
   useEffect(() => {
     fetchData();
@@ -59,6 +64,7 @@ const AppProvider = ({ children }) => {
         remove,
         increase,
         decrease,
+        toggleAmount,
       }}
     >
       {children}
