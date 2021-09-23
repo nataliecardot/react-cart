@@ -71,7 +71,8 @@ const reducer = (state, action) => {
         .filter((cartItem) => cartItem.amount !== 0);
       return { ...state, cart: tempCart3 };
     default:
-      return state;
+      // if an action is dispatched with a type not being handled
+      throw new Error('no matching action type');
   }
 };
 
